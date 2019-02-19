@@ -303,6 +303,11 @@ object contrib extends MillModule {
     def moduleDeps = Seq(scalalib)
     def testArgs = Seq("-DMILL_VERSION=" + build.publishVersion()._2)
   }
+
+  object jacoco extends MillModule {
+    def moduleDeps = Seq(scalalib)
+    def testArgs = Seq("-DMILL_VERSION=" + build.publishVersion()._2)
+  }
 }
 
 
@@ -417,7 +422,7 @@ def launcherScript(shellJvmArgs: Seq[String],
 }
 
 object dev extends MillModule{
-  def moduleDeps = Seq(scalalib, scalajslib, scalanativelib, contrib.scalapblib, contrib.tut)
+  def moduleDeps = Seq(scalalib, scalajslib, scalanativelib, contrib.scalapblib, contrib.tut, contrib.jacoco)
 
   def forkArgs =
     (
